@@ -57,8 +57,7 @@ export const ARTICLES: Article[] = [
     ],
     verdict:
       "We came for the music, caught the confidence bug, and now we're wondering if our wardrobes have enough purple.",
-    kicker2: undefined,
-  } as unknown as Article,
+  },
   {
     id: "grammys",
     section: "first-slice",
