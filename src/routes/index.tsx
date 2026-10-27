@@ -243,7 +243,7 @@ function Index() {
               sticker="🎮 Playground"
               color="bg-card"
               title="Accept or Decline Cookies?"
-              body="\"www.Will making eba by 12 AM make me fat?.com\" — accept or decline? Sixty conversation cards, dilemmas and games are waiting."
+              body={'"www.Will making eba by 12 AM make me fat?.com" — accept or decline? Sixty conversation cards, dilemmas and games are waiting.'}
               cta="Enter the Playground"
               emoji="🍪"
             />
