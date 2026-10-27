@@ -434,7 +434,7 @@ export const LEADERBOARD = [
   { rank: 5, name: "EbaEmergency 🥣", points: 3601 },
 ];
 
-export const COMING_SOON = [
+export const COMING_SOON: { name: string; blurb: string; emoji: string; color: "pink" | "lilac" | "mint" }[] = [
   { name: "Would You Rather…", blurb: "Impossible choices, zero mercy.", emoji: "🤔", color: "pink" },
   { name: "Imposter Game", blurb: "Find the fake before the round ends.", emoji: "🕵️", color: "lilac" },
   { name: "Your Ultimate Snack", blurb: "A personality test, but make it edible.", emoji: "🧁", color: "mint" },

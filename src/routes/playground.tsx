@@ -332,10 +332,10 @@ function TicTacToe() {
 
 function ThisOrThatGame() {
   const [idx, setIdx] = useState(0);
-  const [picks, setPicks] = useState<"a" | "b">[]>([]);
+  const [picks, setPicks] = useState<Array<"a" | "b">>([]);
   const [done, setDone] = useState(false);
 
-  const pair = THIS_OR_THAT[idx];
+  const pair = THIS_OR_THAT[idx]!;
   const pick = (side: "a" | "b") => {
     setPicks((p) => [...p, side]);
     if (idx + 1 >= THIS_OR_THAT.length) setDone(true);
@@ -357,7 +357,7 @@ function ThisOrThatGame() {
             <div className="mt-4 flex flex-wrap justify-center gap-2">
               {picks.map((p, i) => (
                 <span key={i} className="sticker bg-candy-yellow text-xs normal-case">
-                  {p === "a" ? THIS_OR_THAT[i].a : THIS_OR_THAT[i].b}
+                  {p === "a" ? THIS_OR_THAT[i]!.a : THIS_OR_THAT[i]!.b}
                 </span>
               ))}
             </div>
