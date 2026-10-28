@@ -68,13 +68,13 @@ function Index() {
                 to="/digest"
                 className="pop-btn bg-candy-pink px-6 py-3 font-display text-sm font-extrabold uppercase tracking-wide text-plum"
               >
-                Read The Digest 📰
+                Read The Digest
               </Link>
               <Link
                 to="/playground"
                 className="pop-btn bg-candy-mint px-6 py-3 font-display text-sm font-extrabold uppercase tracking-wide text-plum"
               >
-                Hit the Playground 🎮
+                Hit the Playground
               </Link>
             </div>
             <div className="flex gap-2 text-2xl">
@@ -115,7 +115,13 @@ function Index() {
           />
           <div className="pop-card mt-10 overflow-hidden bg-card">
             <div className={cn("flex items-center gap-4 border-b-[3px] border-plum px-6 py-4", COLOR_BG[featured.color])}>
-              <span className="text-5xl">{featured.emoji}</span>
+              <img
+                src={featured.image}
+                alt=""
+                width={1024}
+                height={640}
+                className="pop-sm h-16 w-24 shrink-0 border-2 border-plum object-cover"
+              />
               <div>
                 <p className="text-xs font-extrabold uppercase tracking-widest text-plum/70">
                   {featured.category} · {featured.minutes} min read
@@ -202,7 +208,7 @@ function Index() {
               to="/sweeet-box"
               className="pop-btn inline-block bg-candy-yellow px-6 py-3 font-display text-sm font-extrabold uppercase tracking-wide text-plum"
             >
-              Open the Sweeet Box 📺
+              Open the Sweeet Box
             </Link>
           </div>
         </div>
@@ -227,7 +233,7 @@ function Index() {
               title={ARTICLES[1].title}
               body={ARTICLES[1].dek}
               cta="Read the full story"
-              emoji={ARTICLES[1].emoji}
+              image={ARTICLES[1].image}
             />
             <PreviewCard
               to="/community"
@@ -288,6 +294,7 @@ function PreviewCard({
   body,
   cta,
   emoji,
+  image,
 }: {
   to: string;
   sticker: string;
@@ -295,7 +302,8 @@ function PreviewCard({
   title: string;
   body: string;
   cta: string;
-  emoji: string;
+  emoji?: string;
+  image?: string;
 }) {
   return (
     <Link
@@ -304,7 +312,18 @@ function PreviewCard({
     >
       <Sticker color="bg-candy-yellow">{sticker}</Sticker>
       <div className="flex items-start gap-3">
-        <span className="text-4xl">{emoji}</span>
+        {image ? (
+          <img
+            src={image}
+            alt=""
+            width={1024}
+            height={640}
+            loading="lazy"
+            className="pop-sm h-14 w-20 shrink-0 border-2 border-plum object-cover"
+          />
+        ) : (
+          <span className="text-4xl">{emoji}</span>
+        )}
         <p className="font-display text-xl font-extrabold leading-snug text-plum">{title}</p>
       </div>
       <p className="text-sm font-medium leading-relaxed text-plum/75">{body}</p>
