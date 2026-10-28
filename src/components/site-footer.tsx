@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { Link } from "@tanstack/react-router";
+import { Instagram, Youtube } from "lucide-react";
 import { NAV } from "./site-header";
 import { SOCIALS } from "@/data/content";
 import { CandyButton } from "./ui-sweeet";
+import logoAsset from "@/assets/sweeet-logo.png.asset.json";
 
 export function SiteFooter() {
   const [email, setEmail] = useState("");
@@ -12,8 +14,8 @@ export function SiteFooter() {
     <footer className="border-t-[3px] border-plum bg-plum text-background">
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 md:grid-cols-[1.2fr_1fr_1.2fr]">
         <div>
-          <span className="pop-sm inline-flex items-center gap-1 bg-candy-pink px-3 py-1.5 font-display text-2xl font-extrabold uppercase tracking-tight text-plum">
-            Sweeet <span className="text-xl">🍒</span>
+          <span className="pop-sm inline-flex items-center bg-candy-pink px-3 py-1.5">
+            <img src={logoAsset.url} alt="Sweeet Network" className="h-6 w-auto" />
           </span>
           <p className="mt-4 max-w-sm text-sm font-medium leading-relaxed text-background/80">
             Where food, pop culture, lifestyle and entertainment come together — with a little
@@ -24,17 +26,17 @@ export function SiteFooter() {
               href={SOCIALS.instagram}
               target="_blank"
               rel="noreferrer"
-              className="pop-sm bg-candy-pink px-3 py-1.5 text-xs font-extrabold uppercase text-plum"
+              className="pop-sm flex items-center gap-1.5 bg-candy-pink px-3 py-1.5 text-xs font-extrabold uppercase text-plum"
             >
-              📸 @sweeetnetwork
+              <Instagram size={14} strokeWidth={2.5} /> @sweeetnetwork
             </a>
             <a
               href={SOCIALS.youtube}
               target="_blank"
               rel="noreferrer"
-              className="pop-sm bg-candy-orange px-3 py-1.5 text-xs font-extrabold uppercase text-plum"
+              className="pop-sm flex items-center gap-1.5 bg-candy-orange px-3 py-1.5 text-xs font-extrabold uppercase text-plum"
             >
-              ▶ @sweeetnetwork
+              <Youtube size={14} strokeWidth={2.5} /> @sweeetnetwork
             </a>
           </div>
         </div>

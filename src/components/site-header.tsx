@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "@tanstack/react-router";
+import { Menu, Search, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { SEARCH_INDEX } from "@/data/content";
-import { CandyButton, COLOR_BG, type CandyColor } from "./ui-sweeet";
+import logoAsset from "@/assets/sweeet-logo.png.asset.json";
+import { CandyButton, type CandyColor } from "./ui-sweeet";
 
 const NAV = [
   { to: "/", label: "Home" },
@@ -17,10 +19,13 @@ const NAV = [
 function Logo() {
   return (
     <Link to="/" className="group flex items-center gap-2">
-      <span className="pop-sm flex h-10 items-center gap-1 bg-candy-pink px-3 font-display text-2xl font-extrabold uppercase tracking-tight text-plum">
-        Sweeet
+      <span className="pop-sm flex h-11 items-center bg-candy-pink px-3 py-1.5">
+        <img
+          src={logoAsset.url}
+          alt="Sweeet Network"
+          className="h-6 w-auto transition-transform group-hover:animate-wiggle"
+        />
       </span>
-      <span className="text-2xl transition-transform group-hover:animate-wiggle">🍒</span>
     </Link>
   );
 }
@@ -180,22 +185,22 @@ export function SiteHeader() {
             <button
               onClick={() => setSearchOpen(true)}
               aria-label="Search Sweeet"
-              className="pop-sm flex h-10 w-10 items-center justify-center bg-card text-lg transition-transform hover:-translate-y-0.5"
+              className="pop-sm flex h-10 w-10 items-center justify-center bg-card transition-transform hover:-translate-y-0.5"
             >
-              🔍
+              <Search size={18} strokeWidth={2.5} />
             </button>
             <button
               onClick={() => setNewsOpen(true)}
               className="pop-btn hidden bg-candy-pink px-4 py-2 font-display text-[13px] font-extrabold uppercase tracking-wide text-plum md:block"
             >
-              Get Sweeet 💌
+              Get Sweeet
             </button>
             <button
               onClick={() => setMenuOpen((v) => !v)}
               aria-label="Menu"
-              className="pop-sm flex h-10 w-10 items-center justify-center bg-card text-lg lg:hidden"
+              className="pop-sm flex h-10 w-10 items-center justify-center bg-card lg:hidden"
             >
-              {menuOpen ? "✕" : "☰"}
+              {menuOpen ? <X size={20} strokeWidth={2.5} /> : <Menu size={20} strokeWidth={2.5} />}
             </button>
           </div>
         </div>
@@ -220,7 +225,7 @@ export function SiteHeader() {
               }}
               className={cn("pop-btn mt-3 w-full bg-candy-pink px-4 py-2.5 font-display text-sm font-extrabold uppercase text-plum md:hidden")}
             >
-              Get Sweeet 💌
+              Get Sweeet
             </button>
           </nav>
         ) : null}

@@ -120,8 +120,15 @@ function ArticleCard({ article, onOpen }: { article: Article; onOpen: () => void
       onClick={onOpen}
       className="pop-card group flex flex-col overflow-hidden bg-card text-left transition-transform hover:-translate-y-1"
     >
-      <div className={cn("relative flex h-36 items-center justify-center border-b-[3px] border-plum", COLOR_BG[article.color])}>
-        <span className="text-6xl transition-transform group-hover:animate-wiggle">{article.emoji}</span>
+      <div className="relative h-40 border-b-[3px] border-plum">
+        <img
+          src={article.image}
+          alt={article.title}
+          width={1024}
+          height={640}
+          loading="lazy"
+          className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+        />
         <span className="sticker absolute left-3 top-3 rotate-2 bg-card text-[10px] uppercase">{article.category}</span>
       </div>
       <div className="flex flex-1 flex-col p-5">
@@ -157,7 +164,13 @@ function ArticleReader({ article, onClose }: { article: Article; onClose: () => 
         onClick={(e) => e.stopPropagation()}
       >
         <div className={cn("flex items-center gap-4 border-b-[3px] border-plum px-6 py-6 md:px-10", COLOR_BG[article.color])}>
-          <span className="text-6xl">{article.emoji}</span>
+            <img
+              src={article.image}
+              alt=""
+              width={1024}
+              height={640}
+              className="pop-sm h-16 w-24 shrink-0 border-2 border-plum object-cover"
+            />
           <div>
             <Sticker color="bg-card">{article.category}</Sticker>
             <h2 className="mt-2 font-display text-2xl font-extrabold leading-tight text-plum md:text-3xl">

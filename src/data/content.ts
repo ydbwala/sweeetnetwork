@@ -1,5 +1,12 @@
 /* Sweeet Network content — pulled from the HEADERS doc and the 2026 business plan. */
 
+import starrgirlPhoto from "@/assets/article-starrgirl.jpg";
+import grammysPhoto from "@/assets/article-grammys.jpg";
+import audiobooksPhoto from "@/assets/article-audiobooks.jpg";
+import halftimePhoto from "@/assets/article-halftime.jpg";
+import wolvesPhoto from "@/assets/article-wolves.jpg";
+import fashionPhoto from "@/assets/article-fashion.jpg";
+
 export const SOCIALS = {
   instagram: "https://www.instagram.com/sweeetnetwork",
   youtube: "https://www.youtube.com/@sweeetnetwork",
@@ -27,6 +34,7 @@ export type Article = {
   title: string;
   dek: string;
   emoji: string;
+  image: string;
   color: "pink" | "yellow" | "lilac" | "orange" | "mint";
   minutes: number;
   reactions: number;
@@ -45,6 +53,7 @@ export const ARTICLES: Article[] = [
     title: "Ayra Starr's Starrgirl Album Has Everyone Wearing Purple and Feeling Confident",
     dek: "Purple outfits, pretty-girl energy, and an entire fanbase feeling themselves? Ayra Starr said it's time to step into our confident-girl era, and apparently, we're all clocking in.",
     emoji: "💜",
+    image: starrgirlPhoto,
     color: "lilac",
     minutes: 4,
     reactions: 486,
@@ -65,6 +74,7 @@ export const ARTICLES: Article[] = [
     title: "Grammy Season Is Here, and Nigerian Artists Have Entered the Chat",
     dek: "Submissions for the 2027 Grammy Awards are in — Davido, Tems, Asake, Ayra Starr, Victony, Seun Kuti and more have put their music forward. And this time, our people are going for the big rooms.",
     emoji: "🏆",
+    image: grammysPhoto,
     color: "yellow",
     minutes: 5,
     reactions: 311,
@@ -90,6 +100,7 @@ export const ARTICLES: Article[] = [
     title: "Spotify Now Has Audiobooks for Nigerians!",
     dek: "Since October 14, Nigerian users can access over 350,000 audiobooks on the app. Romance, thrillers, fantasy, nonfiction — name it. Now let's settle the big question: does listening count as reading?",
     emoji: "🎧",
+    image: audiobooksPhoto,
     color: "mint",
     minutes: 4,
     reactions: 224,
@@ -117,6 +128,7 @@ export const ARTICLES: Article[] = [
     title: "Ayra Starr Becomes the First African Artist to Headline an NFL International Games Halftime Show",
     dek: "On October 11, our very own Starrgirl took the stage at Tottenham Hotspur Stadium in London — and became the first African artist to headline an NFL International Games halftime show.",
     emoji: "🏈",
+    image: halftimePhoto,
     color: "pink",
     minutes: 4,
     reactions: 751,
@@ -139,6 +151,7 @@ export const ARTICLES: Article[] = [
     title: "Renowned Nigerian Author Chimeka Garricks Teases Fans with a New Book Announcement",
     dek: "If you've read A Broken People's Playlist or Tomorrow Died Yesterday, you'd know why book lovers are hyped about A Prayer for Wolves. Published by Masobe Books, expected in the second quarter of 2027.",
     emoji: "📖",
+    image: wolvesPhoto,
     color: "orange",
     minutes: 4,
     reactions: 189,
@@ -162,6 +175,7 @@ export const ARTICLES: Article[] = [
     title: "Rachel Ojuromi: Who Says You Need Paris to Make a Fashion Statement?",
     dek: "From street-style videos on Lagos streets to walking for CHANEL in Paris — @giverachelashot made her runway debut at Chanel's Spring/Summer 2027 show. Please appreciate the plot!",
     emoji: "👗",
+    image: fashionPhoto,
     color: "lilac",
     minutes: 5,
     reactions: 602,
