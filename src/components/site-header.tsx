@@ -18,14 +18,12 @@ const NAV = [
 
 function Logo() {
   return (
-    <Link to="/" className="group flex items-center gap-2">
-      <span className="pop-sm flex h-11 items-center bg-candy-pink px-3 py-1.5">
-        <img
-          src={logoAsset.url}
-          alt="Sweeet Network"
-          className="h-6 w-auto transition-transform group-hover:animate-wiggle"
-        />
-      </span>
+    <Link to="/" className="group flex items-center">
+      <img
+        src={logoAsset.url}
+        alt="Sweeet Network"
+        className="h-8 w-auto transition-transform group-hover:animate-wiggle"
+      />
     </Link>
   );
 }
