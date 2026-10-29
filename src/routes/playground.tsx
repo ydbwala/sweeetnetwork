@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
+import { Ban, Cookie, Crown, Shuffle } from "lucide-react";
 
 import {
   CandyButton,
@@ -140,7 +141,7 @@ function CardDecks() {
                 setPos(0);
               }}
             >
-              Shuffle 🔀
+              <span className="flex items-center gap-2"><Shuffle size={16} strokeWidth={2.5} /> Shuffle</span>
             </CandyButton>
           </div>
         </div>
@@ -235,10 +236,10 @@ function CookieGame() {
               <p className="mt-2 text-sm font-bold text-plum/60">This site uses cookies. Do you accept?</p>
               <div className="mt-6 flex justify-center gap-3">
                 <CandyButton className="bg-candy-mint" onClick={() => answer(true)}>
-                  Accept 🍪
+                  <span className="flex items-center gap-2"><Cookie size={16} strokeWidth={2.5} /> Accept</span>
                 </CandyButton>
                 <CandyButton className="bg-candy-pink" onClick={() => answer(false)}>
-                  Decline 🚫
+                  <span className="flex items-center gap-2"><Ban size={16} strokeWidth={2.5} /> Decline</span>
                 </CandyButton>
               </div>
             </div>
@@ -419,7 +420,7 @@ function LeaderboardSection() {
                 i === 0 && "bg-candy-yellow/60"
               )}
             >
-              <span className="font-display text-xl font-extrabold text-plum">{p.rank === 1 ? "👑" : p.rank}</span>
+              <span className="font-display text-xl font-extrabold text-plum">{p.rank === 1 ? <Crown size={20} strokeWidth={2.5} className="inline" /> : p.rank}</span>
               <span className="font-display text-base font-extrabold text-plum">{p.name}</span>
               <span className="ml-auto text-sm font-extrabold text-muted-foreground">{p.points} pts</span>
             </div>
