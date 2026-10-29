@@ -45,7 +45,7 @@ const FEATURED = [ARTICLES[3]!, ARTICLES[0]!, ARTICLES[5]!];
 
 function Index() {
   const [slide, setSlide] = useState(0);
-  const featured = FEATURED[slide];
+  const featured = FEATURED[slide] ?? FEATURED[0]!;
 
   return (
     <main>
