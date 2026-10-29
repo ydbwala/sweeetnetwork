@@ -214,7 +214,7 @@ function AboutPage() {
             tutorials — plus the Sweeet Digest newsletter, The Sweeet Treat giveaways, our vendor
             and event database, and the ticketed Sweeet Festival.
           </p>
-          <CandyButton className="mt-8 bg-candy-pink">Come hungry, leave Sweeet 🍩</CandyButton>
+          <CandyButton className="mt-8 bg-candy-pink">Come hungry, leave Sweeet</CandyButton>
         </div>
       </section>
 

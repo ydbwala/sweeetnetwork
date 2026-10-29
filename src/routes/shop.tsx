@@ -173,7 +173,7 @@ function ShopPage() {
                   <span className="font-display text-xl font-extrabold text-plum">₦{total.toLocaleString()}</span>
                 </div>
                 <CandyButton className="mt-5 w-full bg-candy-pink" onClick={() => setCheckedOut(true)}>
-                  Check out 🍒
+                  Check out
                 </CandyButton>
               </>
             )}
