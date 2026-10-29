@@ -202,14 +202,14 @@ function ArticleReader({ article, onClose }: { article: Article; onClose: () => 
               <p className="mt-2 font-display text-xl font-extrabold text-plum">{article.poll.question}</p>
               <div className="mt-4 space-y-3">
                 {article.poll.options.map((o, i) => {
-                  const pct = pollVotes && totalVotes ? Math.round((pollVotes[i] / totalVotes) * 100) : 0;
+                  const pct = pollVotes && totalVotes ? Math.round(((pollVotes[i] ?? 0) / totalVotes) * 100) : 0;
                   return (
                     <button
                       key={o.label}
                       onClick={() => {
                         if (!pollVotes) {
                           const next = article.poll!.options.map((x) => x.votes);
-                          next[i] += 1;
+                          next[i] = (next[i] ?? 0) + 1;
                           setPollVotes(next);
                         }
                       }}

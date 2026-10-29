@@ -102,7 +102,7 @@ function PassThePepper() {
             const agreePct = Math.round((t.agree / total) * 100);
             const my = voted[t.id];
             return (
-              <div key={t.id} className={cn("pop-card flex flex-col gap-4 p-6", COLOR_BG[(["pink", "mint", "lilac", "yellow", "orange", "pink"] as const)[i % 6]])}>
+              <div key={t.id} className={cn("pop-card flex flex-col gap-4 p-6", COLOR_BG[(["pink", "mint", "lilac", "yellow", "orange", "pink"] as const)[i % 6]!])}>
                 <Sticker color="bg-card">{t.topic}</Sticker>
                 <p className="font-display text-lg font-extrabold leading-snug text-plum">"{t.text}"</p>
                 <div className="mt-auto">
@@ -327,7 +327,7 @@ function SweeetsChoice() {
         />
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
           {CERTIFIED_VENDORS.map((v, i) => (
-            <div key={v.name} className={cn("pop-card flex flex-col items-center gap-2 p-6 text-center", COLOR_BG[(["yellow", "orange", "pink", "lilac", "mint"] as const)[i]])}>
+            <div key={v.name} className={cn("pop-card flex flex-col items-center gap-2 p-6 text-center", COLOR_BG[(["yellow", "orange", "pink", "lilac", "mint"] as const)[i]!])}>
               <span className="text-5xl">{v.emoji}</span>
               <p className="font-display text-lg font-extrabold text-plum">{v.name}</p>
               <p className="text-xs font-bold text-plum/75">{v.tag}</p>

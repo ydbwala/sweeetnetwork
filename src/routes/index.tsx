@@ -41,7 +41,7 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const FEATURED = [ARTICLES[3], ARTICLES[0], ARTICLES[5]];
+const FEATURED = [ARTICLES[3]!, ARTICLES[0]!, ARTICLES[5]!];
 
 function Index() {
   const [slide, setSlide] = useState(0);
@@ -230,10 +230,10 @@ function Index() {
               to="/digest"
               sticker="📰 The Digest"
               color="bg-card"
-              title={ARTICLES[1].title}
-              body={ARTICLES[1].dek}
+              title={ARTICLES[1]!.title}
+              body={ARTICLES[1]!.dek}
               cta="Read the full story"
-              image={ARTICLES[1].image}
+              image={ARTICLES[1]!.image}
             />
             <PreviewCard
               to="/community"

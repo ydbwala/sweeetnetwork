@@ -62,8 +62,8 @@ function PlaygroundPage() {
 /* ---- Conversation card games ---- */
 
 function CardDecks() {
-  const [deckId, setDeckId] = useState(DECKS[0].id);
-  const [order, setOrder] = useState<number[]>(() => shuffleIndices(DECKS[0].prompts.length));
+  const [deckId, setDeckId] = useState(DECKS[0]!.id);
+  const [order, setOrder] = useState<number[]>(() => shuffleIndices(DECKS[0]!.prompts.length));
   const [pos, setPos] = useState(0);
   const [flipped, setFlipped] = useState(false);
 
@@ -76,7 +76,7 @@ function CardDecks() {
     setFlipped(false);
   };
 
-  const prompt = deck.prompts[order[pos]];
+  const prompt = deck.prompts[order[pos]!];
 
   return (
     <section className="border-b-[3px] border-plum px-4 py-14">
@@ -154,7 +154,9 @@ function shuffleIndices(n: number) {
   const arr = Array.from({ length: n }, (_, i) => i);
   for (let i = arr.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
-    [arr[i], arr[j]] = [arr[j], arr[i]];
+    const a = arr[i]!;
+    const b = arr[j]!;
+    [arr[i], arr[j]] = [b, a];
   }
   return arr;
 }
@@ -252,7 +254,7 @@ function CookieGame() {
 
 /* ---- Tic-tac-toe: cupcakes vs donuts ---- */
 
-const LINES = [
+const LINES: [number, number, number][] = [
   [0, 1, 2], [3, 4, 5], [6, 7, 8],
   [0, 3, 6], [1, 4, 7], [2, 5, 8],
   [0, 4, 8], [2, 4, 6],
@@ -279,7 +281,7 @@ function TicTacToe() {
     const w1 = winnerOf(next);
     if (!w1) {
       const empty = next.map((v, k) => (v ? null : k)).filter((v): v is number => v !== null);
-      if (empty.length) next[empty[Math.floor(Math.random() * empty.length)]] = "🍩";
+      if (empty.length) next[empty[Math.floor(Math.random() * empty.length)]!] = "🍩";
     }
     setBoard(next);
   };
