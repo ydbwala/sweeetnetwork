@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "@tanstack/react-router";
+import { Eye, Instagram, Music2, Play, Youtube } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { SOCIALS, type SocialPost } from "@/data/content";
 
@@ -166,7 +167,7 @@ export function CollabBanner() {
           href={`mailto:${SOCIALS.email}?subject=Partnership%20with%20Sweeet%20Network`}
           className="pop-btn shrink-0 bg-candy-orange px-6 py-3.5 font-display text-sm font-extrabold uppercase tracking-wide text-plum"
         >
-          Partner with us 🤝
+          Partner with us
         </a>
       </div>
     </section>
@@ -180,25 +181,25 @@ export function SocialLinks({ className }: { className?: string }) {
         href={SOCIALS.youtube}
         target="_blank"
         rel="noreferrer"
-        className="pop-btn bg-candy-orange px-5 py-2.5 font-display text-sm font-extrabold uppercase tracking-wide text-plum"
+        className="pop-btn flex items-center gap-2 bg-candy-orange px-5 py-2.5 font-display text-sm font-extrabold uppercase tracking-wide text-plum"
       >
-        ▶️ YouTube
+        <Youtube size={16} strokeWidth={2.5} /> YouTube
       </a>
       <a
         href={SOCIALS.instagram}
         target="_blank"
         rel="noreferrer"
-        className="pop-btn bg-candy-pink px-5 py-2.5 font-display text-sm font-extrabold uppercase tracking-wide text-plum"
+        className="pop-btn flex items-center gap-2 bg-candy-pink px-5 py-2.5 font-display text-sm font-extrabold uppercase tracking-wide text-plum"
       >
-        📸 Instagram
+        <Instagram size={16} strokeWidth={2.5} /> Instagram
       </a>
       <a
         href={SOCIALS.tiktok}
         target="_blank"
         rel="noreferrer"
-        className="pop-btn bg-candy-lilac px-5 py-2.5 font-display text-sm font-extrabold uppercase tracking-wide text-plum"
+        className="pop-btn flex items-center gap-2 bg-candy-lilac px-5 py-2.5 font-display text-sm font-extrabold uppercase tracking-wide text-plum"
       >
-        🎵 TikTok
+        <Music2 size={16} strokeWidth={2.5} /> TikTok
       </a>
     </div>
   );
@@ -212,17 +213,20 @@ export function SocialCard({ post, onOpen }: { post: SocialPost; onOpen: () => v
     >
       <div className={cn("relative flex h-44 items-center justify-center border-b-[3px] border-plum", COLOR_BG[post.color])}>
         <span className="text-6xl drop-shadow-sm transition-transform group-hover:scale-110">{post.emoji}</span>
-        <span className="sticker absolute left-3 top-3 rotate-2 bg-card text-[10px] uppercase">
-          {post.platform === "youtube" ? "▶ YouTube" : "📸 Instagram"}
+        <span className="sticker absolute left-3 top-3 flex items-center gap-1 rotate-2 bg-card text-[10px] uppercase">
+          {post.platform === "youtube" ? <Youtube size={10} strokeWidth={3} /> : <Instagram size={10} strokeWidth={3} />}
+          {post.platform === "youtube" ? "YouTube" : "Instagram"}
         </span>
         <span className="pop-sm absolute bottom-3 right-3 flex items-center gap-1 bg-plum px-2.5 py-1 text-xs font-bold text-background">
-          ▶ Play
+          <Play size={11} strokeWidth={3} /> Play
         </span>
       </div>
       <div className="px-4 py-4">
         <p className="text-[11px] font-extrabold uppercase tracking-widest text-muted-foreground">{post.kind}</p>
         <p className="mt-1 line-clamp-2 font-display text-base font-extrabold leading-snug text-plum">{post.title}</p>
-        <p className="mt-2 text-xs font-bold text-muted-foreground">👁 {post.views}</p>
+        <p className="mt-2 flex items-center gap-1 text-xs font-bold text-muted-foreground">
+          <Eye size={12} strokeWidth={2.5} /> {post.views}
+        </p>
       </div>
     </button>
   );

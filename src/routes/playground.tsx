@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
+import { Ban, Cookie, Crown, Shuffle } from "lucide-react";
 
 import {
   CandyButton,
@@ -61,8 +62,8 @@ function PlaygroundPage() {
 /* ---- Conversation card games ---- */
 
 function CardDecks() {
-  const [deckId, setDeckId] = useState(DECKS[0].id);
-  const [order, setOrder] = useState<number[]>(() => shuffleIndices(DECKS[0].prompts.length));
+  const [deckId, setDeckId] = useState(DECKS[0]!.id);
+  const [order, setOrder] = useState<number[]>(() => shuffleIndices(DECKS[0]!.prompts.length));
   const [pos, setPos] = useState(0);
   const [flipped, setFlipped] = useState(false);
 
@@ -75,7 +76,7 @@ function CardDecks() {
     setFlipped(false);
   };
 
-  const prompt = deck.prompts[order[pos]];
+  const prompt = deck.prompts[order[pos]!];
 
   return (
     <section className="border-b-[3px] border-plum px-4 py-14">
@@ -140,7 +141,7 @@ function CardDecks() {
                 setPos(0);
               }}
             >
-              Shuffle 🔀
+              <span className="flex items-center gap-2"><Shuffle size={16} strokeWidth={2.5} /> Shuffle</span>
             </CandyButton>
           </div>
         </div>
@@ -153,7 +154,9 @@ function shuffleIndices(n: number) {
   const arr = Array.from({ length: n }, (_, i) => i);
   for (let i = arr.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
-    [arr[i], arr[j]] = [arr[j], arr[i]];
+    const a = arr[i]!;
+    const b = arr[j]!;
+    [arr[i], arr[j]] = [b, a];
   }
   return arr;
 }
@@ -235,10 +238,10 @@ function CookieGame() {
               <p className="mt-2 text-sm font-bold text-plum/60">This site uses cookies. Do you accept?</p>
               <div className="mt-6 flex justify-center gap-3">
                 <CandyButton className="bg-candy-mint" onClick={() => answer(true)}>
-                  Accept 🍪
+                  <span className="flex items-center gap-2"><Cookie size={16} strokeWidth={2.5} /> Accept</span>
                 </CandyButton>
                 <CandyButton className="bg-candy-pink" onClick={() => answer(false)}>
-                  Decline 🚫
+                  <span className="flex items-center gap-2"><Ban size={16} strokeWidth={2.5} /> Decline</span>
                 </CandyButton>
               </div>
             </div>
@@ -251,7 +254,7 @@ function CookieGame() {
 
 /* ---- Tic-tac-toe: cupcakes vs donuts ---- */
 
-const LINES = [
+const LINES: [number, number, number][] = [
   [0, 1, 2], [3, 4, 5], [6, 7, 8],
   [0, 3, 6], [1, 4, 7], [2, 5, 8],
   [0, 4, 8], [2, 4, 6],
@@ -278,7 +281,7 @@ function TicTacToe() {
     const w1 = winnerOf(next);
     if (!w1) {
       const empty = next.map((v, k) => (v ? null : k)).filter((v): v is number => v !== null);
-      if (empty.length) next[empty[Math.floor(Math.random() * empty.length)]] = "🍩";
+      if (empty.length) next[empty[Math.floor(Math.random() * empty.length)]!] = "🍩";
     }
     setBoard(next);
   };
@@ -419,7 +422,7 @@ function LeaderboardSection() {
                 i === 0 && "bg-candy-yellow/60"
               )}
             >
-              <span className="font-display text-xl font-extrabold text-plum">{p.rank === 1 ? "👑" : p.rank}</span>
+              <span className="font-display text-xl font-extrabold text-plum">{p.rank === 1 ? <Crown size={20} strokeWidth={2.5} className="inline" /> : p.rank}</span>
               <span className="font-display text-base font-extrabold text-plum">{p.name}</span>
               <span className="ml-auto text-sm font-extrabold text-muted-foreground">{p.points} pts</span>
             </div>

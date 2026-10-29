@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
+import { ThumbsDown, ThumbsUp } from "lucide-react";
 
 import {
   CandyButton,
@@ -101,7 +102,7 @@ function PassThePepper() {
             const agreePct = Math.round((t.agree / total) * 100);
             const my = voted[t.id];
             return (
-              <div key={t.id} className={cn("pop-card flex flex-col gap-4 p-6", COLOR_BG[(["pink", "mint", "lilac", "yellow", "orange", "pink"] as const)[i % 6]])}>
+              <div key={t.id} className={cn("pop-card flex flex-col gap-4 p-6", COLOR_BG[(["pink", "mint", "lilac", "yellow", "orange", "pink"] as const)[i % 6]!])}>
                 <Sticker color="bg-card">{t.topic}</Sticker>
                 <p className="font-display text-lg font-extrabold leading-snug text-plum">"{t.text}"</p>
                 <div className="mt-auto">
@@ -109,8 +110,8 @@ function PassThePepper() {
                     <div className="h-full bg-candy-mint transition-all" style={{ width: `${agreePct}%` }} />
                   </div>
                   <div className="mt-2 flex items-center justify-between text-xs font-extrabold text-plum/80">
-                    <span>👍 {t.agree} agree · {agreePct}%</span>
-                    <span>👎 {t.disagree} disagree</span>
+                    <span className="flex items-center gap-1"><ThumbsUp size={12} strokeWidth={2.5} /> {t.agree} agree · {agreePct}%</span>
+                    <span className="flex items-center gap-1"><ThumbsDown size={12} strokeWidth={2.5} /> {t.disagree} disagree</span>
                   </div>
                   <div className="mt-3 flex gap-2">
                     <button
@@ -121,7 +122,7 @@ function PassThePepper() {
                         my === "agree" ? "bg-candy-mint" : my ? "bg-card opacity-50" : "bg-card"
                       )}
                     >
-                      {my === "agree" ? "You agreed ✓" : "Agree 👍"}
+                      {my === "agree" ? "You agreed ✓" : "Agree"}
                     </button>
                     <button
                       onClick={() => vote(t.id, "disagree")}
@@ -131,7 +132,7 @@ function PassThePepper() {
                         my === "disagree" ? "bg-candy-pink" : my ? "bg-card opacity-50" : "bg-card"
                       )}
                     >
-                      {my === "disagree" ? "You disagreed ✓" : "Disagree 👎"}
+                      {my === "disagree" ? "You disagreed ✓" : "Disagree"}
                     </button>
                   </div>
                 </div>
@@ -177,7 +178,7 @@ function SweetOrSour() {
                       </div>
                     </div>
                     <p className="mt-2 text-xs font-bold text-plum/70">
-                      🍯 Sweet {s.sweetPct}% · 🍋 Sour {sourPct}% · you said {my}
+                      Sweet {s.sweetPct}% · Sour {sourPct}% · you said {my}
                     </p>
                   </div>
                 ) : (
@@ -186,13 +187,13 @@ function SweetOrSour() {
                       onClick={() => setVoted((v) => ({ ...v, [s.id]: "sweet" }))}
                       className="pop-btn flex-1 bg-candy-mint py-2 font-display text-xs font-extrabold uppercase text-plum"
                     >
-                      🍯 Sweet
+                      Sweet
                     </button>
                     <button
                       onClick={() => setVoted((v) => ({ ...v, [s.id]: "sour" }))}
                       className="pop-btn flex-1 bg-candy-orange py-2 font-display text-xs font-extrabold uppercase text-plum"
                     >
-                      🍋 Sour
+                      Sour
                     </button>
                   </div>
                 )}
@@ -326,7 +327,7 @@ function SweeetsChoice() {
         />
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
           {CERTIFIED_VENDORS.map((v, i) => (
-            <div key={v.name} className={cn("pop-card flex flex-col items-center gap-2 p-6 text-center", COLOR_BG[(["yellow", "orange", "pink", "lilac", "mint"] as const)[i]])}>
+            <div key={v.name} className={cn("pop-card flex flex-col items-center gap-2 p-6 text-center", COLOR_BG[(["yellow", "orange", "pink", "lilac", "mint"] as const)[i]!])}>
               <span className="text-5xl">{v.emoji}</span>
               <p className="font-display text-lg font-extrabold text-plum">{v.name}</p>
               <p className="text-xs font-bold text-plum/75">{v.tag}</p>
@@ -367,7 +368,7 @@ function SweeetsChoice() {
               <input value={form.social} onChange={(e) => setForm({ ...form, social: e.target.value })} placeholder="Instagram handle" className="pop-input px-4 py-3 text-sm font-semibold" />
               <input required type="email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} placeholder="Email address" className="pop-input px-4 py-3 text-sm font-semibold sm:col-span-2" />
               <CandyButton type="submit" className="bg-candy-orange sm:col-span-2 sm:justify-self-start">
-                Apply now 🧾
+                Apply now
               </CandyButton>
             </form>
           )}
@@ -414,7 +415,7 @@ function SpillTheTea() {
               className="pop-input px-4 py-3 text-sm font-medium"
             />
             <CandyButton type="submit" className="self-center bg-candy-yellow">
-              Spill it 🍵
+              Spill it
             </CandyButton>
           </form>
         </div>
